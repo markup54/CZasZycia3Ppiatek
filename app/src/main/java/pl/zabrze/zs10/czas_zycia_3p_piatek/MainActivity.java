@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
+        outState.putInt("PUNKTY",punkty);
         Log.i("CZAS_ZYCIA","Uruchomiona metoda onSaveInstanceState");
     }
 
@@ -68,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
         buttonGora = findViewById(R.id.imageButton);
         buttonDol = findViewById(R.id.imageButton2);
         textView = findViewById(R.id.textView);
+        if(savedInstanceState != null){
+            punkty = savedInstanceState.getInt("PUNKTY");
+            textView.setText(punkty.toString());
+        }
         buttonGora.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
